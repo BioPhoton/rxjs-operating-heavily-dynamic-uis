@@ -1,0 +1,119 @@
+body {
+  font: 16px/1 'Roboto', sans-serif;
+  color: #000;
+  background: #eee;
+  -webkit-font-smoothing: antialiased;
+  text-align: center;
+}
+
+button,
+input {
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+  border: 0;
+  outline: 0;
+  color: #fff;
+}
+
+label {
+  color: rgb(0,0,0);
+}
+
+input[type="number"],
+input[type="text"] {
+  width: 400px;
+  font-weight: bold;
+  margin: 0 0 20px;
+  padding: 8px 12px 10px 12px;
+  border: 0px solid rgb(0,0,0);
+  border-bottom-width: 2px;
+  background: none;
+  color: rgb(0,0,0);
+}
+
+button,
+input[type="submit"] {
+  width: 150px;
+  margin: 0 0 20px;
+  padding: 8px 0 10px 0;
+  text-align: center;
+  border: 1px solid rgba(0,0,0,0.9);
+  background: rgba(0,0,0,.75);
+}
+
+.countdownHolder{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 240px;
+	width:100%;
+	margin:0 auto;
+	font: 120px/1.5 'Open Sans Condensed',sans-serif;
+	text-align:center;
+	letter-spacing:-3px;
+
+  .position{
+    display: inline-block;
+    height: 1.6em;
+    overflow: hidden;
+    position: relative;
+    width: 1.05em;
+
+    .digit{
+      position:absolute;
+      display:block;
+      width:1em;
+      background-color:#444;
+      border-radius:0.2em;
+      text-align:center;
+      color:#fff;
+      letter-spacing:-1px;
+    
+      &.static{
+        box-shadow:1px 1px 1px rgba(4, 4, 4, 0.35);
+        
+        background-image: linear-gradient(bottom, #3A3A3A 50%, #444444 50%);
+        background-image: -o-linear-gradient(bottom, #3A3A3A 50%, #444444 50%);
+        background-image: -moz-linear-gradient(bottom, #3A3A3A 50%, #444444 50%);
+        background-image: -webkit-linear-gradient(bottom, #3A3A3A 50%, #444444 50%);
+        background-image: -ms-linear-gradient(bottom, #3A3A3A 50%, #444444 50%);
+        
+        background-image: -webkit-gradient(
+          linear,
+          left bottom,
+          left top,
+          color-stop(0.5, #3A3A3A),
+          color-stop(0.5, #444444)
+        );
+      }
+    }
+
+  }
+
+  .countDiv{
+    display:inline-block;
+    width:16px;
+    height:1.6em;
+    position:relative;
+
+    &:before,
+    &:after{
+      position:absolute;
+      width:5px;
+      height:5px;
+      background-color:#444;
+      border-radius:50%;
+      left:50%;
+      margin-left:-3px;
+      top:0.5em;
+      box-shadow:1px 1px 1px rgba(4, 4, 4, 0.5);
+      content:'';
+    }
+
+    &:after{
+      top:0.9em;
+    }
+  } 
+
+}
