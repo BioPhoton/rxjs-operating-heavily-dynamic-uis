@@ -46,6 +46,7 @@ const counterUI = new Counter(
 // == SOURCE OBSERVABLES ==================================================
 // All our source observables are extracted into Counter class to hide away all the low leven bindings.
 // === STATE OBSERVABLES ==================================================
+
 const programmaticCommandSubject = new Subject<PartialCountDownState>();
 const counterCommands$ = merge(
   counterUI.btnStart$.pipe(mapTo({isTicking: true})), 
@@ -68,6 +69,7 @@ const counterState$: Observable<CountDownState> = counterCommands$
 
 // === INTERACTION OBSERVABLES ============================================
 // == INTERMEDIATE OBSERVABLES ============================================
+
 const count$ = counterState$.pipe(pluck<CountDownState, number>(ConterStateKeys.count));
 const isTicking$ = counterState$.pipe(queryChange<CountDownState, boolean>(ConterStateKeys.isTicking));
 const tickSpeed$ = counterState$.pipe(queryChange<CountDownState, number>(ConterStateKeys.tickSpeed));
@@ -81,12 +83,14 @@ const counterUpdateTrigger$ = combineLatest([isTicking$, tickSpeed$])
 // = SIDE EFFECTS =========================================================
 
 // == UI INPUTS ===========================================================
+
 const renderCountChange$ = count$.pipe(tap(n => counterUI.renderCounterValue(n)));
 const renderTickSpeedChange$ = tickSpeed$.pipe(tap(n => counterUI.renderTickSpeedInputValue(n)));
 const renderCountDiffChange$ = countDiff$.pipe(tap(n => counterUI.renderCountDiffInputValue(n)));
 const renderSetToChange$ = counterUI.btnReset$.pipe(tap(_ => { counterUI.renderSetToInputValue('10');}));
 
 // == UI OUTPUTS ==========================================================
+
 const commandFromTick$ = counterUpdateTrigger$
   .pipe(
      withLatestFrom(counterState$, (_, counterState) => ({
